@@ -1,0 +1,25 @@
+1.  moment插件来规范化时间
+
+2.  {% if loop.indexo==0 %}是轮播图可以点击切换等
+
+3.  上传图片 首先上传的html处的form要加entype='data.....',调用插件multer，编辑存放图片物理内存的路径，const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/resource/')            //路径
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now()+path.extname(file.originalname))//重命名文件名
+  }
+})
+
+4. required使input的值不能为空
+
+5.  通过input的type=hidden类型来传递数据
+
+6. 安全保存登录信息
+请求地址时随机生成session字符串，若用户登陆成功，则字符串绑定到登录信息上
+
+
+7.富文本编辑器  ，引用ckeditor5文件夹放在静态资源下边
+在需要设置的样式的html文件里相应DOM元素添加id--editor
+创建js文件并引入
+更改语言--zh-cn

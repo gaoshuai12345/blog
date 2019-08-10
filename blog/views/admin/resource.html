@@ -1,0 +1,38 @@
+{% extends './layout.html' %}
+
+{% block header %}
+资源列表
+{% endblock %}
+
+{% block content %}
+
+<a href="/resource/add" class="btn btn-primary">添加资源</a>
+<table class="table">
+  <tr>
+  	<th>名称</th>
+    <th>缩略图</th>
+    <th>路径</th>
+    <th>操作</th>
+  </tr>
+ {% for resource in resources %}
+  <tr>
+  	<td>{{ resource.name }}</td>
+  	<td>
+       <div >
+        <a href="javascript:;" class="thumbnail">
+          <img src="{{ resource.path }}" alt="">
+        </a>
+       </div> 
+    </td>
+  	<td>{{ resource.path }}</td>    <!--  -8*60就是前进8个小时 -->
+  	<td>
+  		<a href="/resource/delete/{{ resource._id.toString() }}">删除</a>
+  	</td>
+  </tr>
+  {% endfor %}
+</table>
+{% if pages > 1 %}<!-- 根据pages数值判断是否显示分页 -->
+	{% include './page.html' %}
+{% endif %}
+
+{% endblock %}

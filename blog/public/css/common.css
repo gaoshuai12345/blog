@@ -1,0 +1,38 @@
+.user-panel{
+	background: #fff;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+#login{
+	display: none;
+}
+.roles{
+	padding-left: 24px;
+	box-sizing: border-box;
+}
+.err{
+	height: 20px;
+	line-height: 20px;
+	padding-left: 10px;
+	display: none;
+}
+.user-panel .pos{
+	font-size: 12px;
+	display: block;
+	text-align: right;
+}
+#logined{
+
+	box-sizing: border-box;
+}
+.user{
+	margin-left: 10px;
+}
+.user span{
+	margin-left: 10px;
+}
+#comment-btn{
+	    padding: 25px 15px;
+}

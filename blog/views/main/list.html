@@ -1,0 +1,9 @@
+{% extends './layout.html' %}
+{%block title %}
+文章列表页
+{% endblock %}
+{% block content %}
+<input type="hidden" value="{{ category }}" id="categoryId">
+{% include './article_list.html' %}
+				
+{% endblock %}

@@ -1,0 +1,21 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="{{ url }}?page={{ page-1 }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% for list in lists %}
+	    {% if page==list %}
+	    <li class="active"><a  href="javascript:;">{{ list }}</a></li>
+	    {% else %}
+	    <li><a href="{{ url }}?page={{ list }}">{{ list }}</a></li>
+	    {% endif %}
+	  {% endfor %}
+    <li>
+      <a href="{{ url }}?page={{ page+1 }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

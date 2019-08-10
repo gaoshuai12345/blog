@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+
+{% block header %}
+站点管理
+{% endblock %}
+
+{% block content %}
+<form class="form-horizontal" action="/admin/site" method="post">
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">网站名称</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="name" placeholder="请输入网站名称" value="{{ site.name }}">
+        </div>
+      </div>
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">首页轮播</label>
+        <div class="col-sm-6">
+          {% for carousel in site.carousels %}
+            <div class="row" id="row-site">
+                <div class="col-lg-5">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      跳转地址
+                    </span>
+                    <input type="text" class="form-control" name="carouselUrl" required value="{{ carousel.url }}">
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-5">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      图片地址
+                    </span>
+                    <input type="text" class="form-control" name="carouselPath" required value="{{ carousel.path }}">
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+                 <a href="javascript:;" class="btn btn-danger btn-remove">删除</a>
+            </div>
+          {% endfor %}
+         <a href="javascript:;" class="btn btn-info btn-add">新增</a>
+        </div>
+   </div>
+   <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">首页广告</label>
+        <div class="col-sm-6">
+          {% for ad in site.ads %}
+          <div class="row" id="row-site">
+              <div class="col-lg-5">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    跳转地址
+                  </span>
+                  <input type="text" class="form-control" name="adUrl" required value="{{ ad.url }}">
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+              <div class="col-lg-5">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    图片地址
+                  </span>
+                  <input type="text" class="form-control" name="adPath" required value="{{ ad.path }}">
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+                <a href="javascript:;" class="btn btn-danger btn-remove">删除</a>
+          </div>
+          {% endfor %}
+          <a href="javascript:;" class="btn btn-info btn-add">新增</a>
+        </div>
+   </div>
+ 
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">博主名字</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="authorName" placeholder="请输入博主名字" required value="{{ site.author.authorName }}">
+        </div>
+  </div>
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">博主头像</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="authorImage" placeholder="请输入博主头像地址" required value="{{ site.author.authorImage }}">
+        </div>
+  </div>
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">博主介绍</label>
+        <div class="col-sm-6">
+        <textarea name="authorIntro" class="form-control">
+         {{ site.author.authorIntro }}
+        </textarea>
+        </div>
+  </div>
+  <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">博主微信</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="wechat" placeholder="请输入博主微信地址" required value="{{ site.author.wechat }}">
+        </div>
+  </div>
+   <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <button type="submit" class="btn btn-primary" id="btn-sub">提交</button>
+    </div>
+  </div>
+</form>
+{% block end %}
+  <script src="/lib/jQuery/jquery-1.12.4.js"></script>
+  <script src="/js/site.js"></script>
+{% endblock %}

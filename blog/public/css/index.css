@@ -1,0 +1,103 @@
+/*id选择器优先级高，或者用！important*/
+body{
+	background-color: #e5e5e5;
+}
+.link{
+	text-decoration: none !important;
+}
+.link:hover{
+	color: #f65a8a !important;
+}
+#xx-navbar .active a{
+	color: #f65a8a;
+	background:transparent;
+}
+#xx-navbar .navbar-brand{
+	color: #333;
+}
+#xx-navbar .navbar-nav a{
+	font-size: 15px;
+	margin-left: 20px;
+}
+#xx-navbar .navbar-nav a:hover{
+	color: #f65a8a;
+}
+/*#main-carousel{
+	margin-bottom: 20px;
+}
+#main-carousel .carousel-inner img{
+	width: 100%;
+	height: 420px;
+}*/
+.ad .thumbnail{
+	border: none;
+	height: 200px;
+	padding: 0;
+	transition: all 0.5s;
+}
+.ad .thumbnail img{
+	width: 100%;
+	height: 100%;
+}
+.ad .thumbnail:hover{
+	box-shadow: 0 5px 5px rgba(0,0,0,0.2)
+}
+#xx-navbar{
+	opacity: 0.8;
+	/*position: relative;*/
+}
+.main{
+	margin-top: 51px;
+	padding-top: 20px;
+}
+#xx-panel .panel-heading{
+	border: none;
+	background-color: transparent;
+	padding-left: 0;
+}
+#xx-panel .panel-title{
+	border-left: 2px solid #f65a8a;
+	padding-left: 15px;
+}
+#xx-panel:hover .panel-heading{
+	color: #f65a8a;
+}
+#xx-panel .panel-footer .panel-footer-text{
+	margin-right: 10px;
+}
+#xx-page .pagination>li>a:hover{
+	background: #fff;
+	color: #f65a8a;
+}
+#xx-me .panel-heading{
+	border: none;
+	background-color: transparent;
+}
+#xx-me .panel-body{
+	
+	background-color:#f7f7f7;
+}
+#xx-me .about-me-img{
+	width: 50px;
+	height: 60px;
+	border-radius: 50%;
+}
+#xx-rank .panel-heading{
+	border: none;
+	background-color: transparent;
+}
+#xx-rank .panel-body a{
+	display: block;
+	padding: 15px 0;
+	color: #000;
+}
+#xx-rank .panel-body{
+	background-color:#f7f7f7;
+}
+#xx-followme .panel-heading{
+	border: none;
+	background-color: transparent;
+}
+#xx-followme .panel-body{
+	background-color:#f7f7f7;
+}

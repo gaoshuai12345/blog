@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"><!-- 带有重置效果 -->
+	<link rel="stylesheet" href="/css/carosuel.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/index.css">
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" id="xx-navbar">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#xx-top-nav" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">{{ site.name }}</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="xx-top-nav">
+	      <ul class="nav navbar-nav">
+	      	{% if category %}
+	        <li><a href="/">首页</a></li>
+	        {% else %}
+	        <li class="active"><a href="/">首页</a></li>
+	        {% endif %}
+
+	        {% for cate in categories %}
+		        {% if cate._id.toString() == category %}
+		        <li class="active"><a href="/list/{{ cate._id.toString() }}">{{ cate.name }}</a><li>
+	        	{% else %}
+	        	<li><a href="/list/{{ cate._id.toString() }}">{{ cate.name }}</a><li>
+	        	{% endif %}
+	        {% endfor %}
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container -->
+	</nav>
+	<div class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					{% block content %}{% endblock %}
+				</div>
+				<div class="col-md-4 hidden-xs hidden-sm" >
+					{% if userInfo._id %}
+					<div class="form-horizontal user-panel" id="logined">
+					  <div class="form-group">
+					    <div class="col-sm-7 user">
+					    	欢迎<span>{{ userInfo.username }}</span>
+					    </div>
+					    <div class="col-sm-7 roles">
+					    	{% if userInfo.isAdmin %}
+					      <a href="/admin" class="link">管理员中心</a>
+					        {% else %}
+					      <a href="/customer" class="link">用户中心</a>
+					        {% endif %}
+					      <a href="javaScript:;" class="link btn  login-out">退出</a>
+					    </div>
+					  </div>
+					</div>
+					{% else %}
+					<div class="form-horizontal user-panel" id="register">
+					  <div class="form-group">
+					    <label  class="col-sm-3 control-label">用户名</label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label  class="col-sm-3 control-label">密码</label>
+					    <div class="col-sm-8">
+					      <input type="password" class="form-control" name="password" placeholder="请输入密码">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label  class="col-sm-3 control-label">密码</label>
+					    <div class="col-sm-8">
+					      <input type="password" class="form-control" placeholder="再次输入密码" name="repassword">
+					    </div>
+					  </div>
+					 <div class="form-group">
+					     <div class="col-sm-12">
+								<p class="text-danger err" ></p>
+					     </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-3 col-sm-8">
+					      <a href="javaScript:;" class="link btn btn-primary sub-register">注册</a>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-11">
+					      <a href="javaScript:;" class="link go-login pos">已有账号去登录</a>
+					    </div>
+					  </div>
+					</div>
+					<div class="form-horizontal user-panel" id="login">
+					  <div class="form-group">
+					    <label  class="col-sm-3 control-label">用户名</label>
+					    <div class="col-sm-8">
+					      <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label  class="col-sm-3 control-label">密码</label>
+					    <div class="col-sm-8">
+					      <input type="password" class="form-control" name="password" placeholder="请输入密码">
+					    </div>
+					  </div>
+					 <div class="form-group">
+					     <div class="col-sm-12">
+								<p class="text-danger err" ></p>
+					     </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-3 col-sm-8">
+					      <a href="javaScript:;" class="link btn btn-primary sub-login">登录</a>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-11">
+					      <a href="javaScript:;" class="link go-register pos">没有账号去注册</a>
+					    </div>
+					  </div>
+					</div>
+					{% endif %}
+					{% for ad in site.ads %}
+					<div class="ad">
+						<a href="{{ ad.url }}" class="thumbnail" target="_blank">
+						      <img src="{{ ad.path }}" alt="...">
+						</a>
+					</div>
+					{% endfor %}
+					<div class="panel panel-default" id="xx-me">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">
+						    	<a href="#" class="link">博主介绍</a>
+						    </h3>
+						  </div>
+						  <div class="panel-body">
+							   <div class="media">
+								  <div class="media-left">
+								    <a href="#">
+								      <img class="media-object img-circle about-me-img" src="{{ site.author.authorImage }}" alt="...">
+								    </a>
+								  </div>
+								  <div class="media-body">
+								    <h4 class="media-heading">{{ site.author.authorName }}</h4>
+								   {{ site.author.authorIntro }}
+								  </div>
+								</div>
+						  </div>
+					</div>
+					<div class="panel panel-default" id="xx-rank">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">
+						    	<a href="#" class="link">点击排行</a>
+						    </h3>
+						  </div>
+						  <div class="panel-body">
+						  	{% for article in clickArticles %}
+						   	<a href="/view/{{ article._id.toString() }}" class="link">[{{ article.click }}] {{ article.title }}</a>
+						   	{% endfor %}
+						  </div>
+
+					</div>
+					<div class="panel panel-default" id="xx-followme">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">
+						    	<a href="#" class="link">关注我</a>
+						    </h3>
+						  </div>
+						  <div class="panel-body">
+							   <div class="media">
+								  <div class="media-left">
+								    <a href="#">
+								      <img class="media-object img-responsive followme-img" src="{{ site.author.wechat }}" alt="...">
+								    </a>
+								  </div>
+								</div>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/lib/jQuery/jquery-1.12.4.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/lib/moment/moment.js"></script>
+<script src="/js/index.js"></script>
+</html>

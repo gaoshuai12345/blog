@@ -1,0 +1,49 @@
+{% extends './layout.html' %}
+
+{% block header %}
+用户列表
+{% endblock %}
+
+{% block content %}
+<table class="table">
+  <tr>
+    <th>id</th>
+    <th>用户名</th>
+    <th>管理员权限</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+  	<td>{{ user._id.toString() }}</td>
+  	<td>{{ user.username }}</td>
+  	<td>
+  		{% if user.isAdmin %}
+  		是
+  		{% else %}
+  		否
+  		{% endif %}
+  	</td>
+  </tr>
+  {% endfor %}
+</table>
+<nav aria-label="Page navigation" style="margin-left: 454px; margin-top:200px;">
+  <ul class="pagination">
+    <li>
+      <a href="/admin/users?page={{ page-1 }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% for list in lists %}
+	    {% if page==list %}
+	    <li class="active"><a  href="javascript:;">{{ list }}</a></li>
+	    {% else %}
+	    <li><a href="/admin/users?page={{ list }}">{{ list }}</a></li>
+	    {% endif %}
+	  {% endfor %}
+    <li>
+      <a href="/admin/users?page={{ page+1 }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endblock %}

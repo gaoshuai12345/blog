@@ -1,0 +1,22 @@
+#xx-detail .detail-text{
+	margin-top: 5px;
+	font-size: 13px;
+}
+#comment{
+	margin-top: 140px;
+}
+#xx-detail{
+	min-height: 400px;
+}
+#xx-detail .panel-title{
+	font-size: 30px;
+}
+#xx-detail .sub-title{
+	margin-top: 5px;
+}
+#xx-detail .sub-title span{
+	margin-right: 10px;
+}
+#xx-detail .panel-body{
+	background: #fff;
+}
